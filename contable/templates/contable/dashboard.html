@@ -1,0 +1,23 @@
+{% extends 'contable/dashboard_base.html' %}
+{% block content %}
+    <div class="col-xs-12 col-sm-12 col-md-12 " id="contenido_principal">
+      {% if not user.empresa.perfil_complato %}
+          <div class="right_col" role="main">
+            <div class="">
+              <div class="row top_tiles" style="margin: 10px 0;">
+                <div class="col-md-12 col-sm-12 col-xs-12 tile">
+                  <h2>Por favor complete el perfil de la empresa</h2>
+                    <button type="button" class="btn btn-success item_menu" rel="/completar_empresa">Completar Perfil Empresa</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      {% elif user.empresa.perfil_complato and not user.empresa.cuentas_montadas %}
+            {% include 'contable/cuenta/cuentas.html'%}
+      {% else %}
+          {% include 'contable/gadgets/comparativo.html' %}
+          {% include 'contable/gadgets/comparativo_historico.html' %}
+      {% endif %}
+    </div>
+
+{% endblock %}

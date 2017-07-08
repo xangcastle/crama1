@@ -1,0 +1,43 @@
+{% extends 'contable/base.html' %}
+{% block content %}
+<section id="contact-us">
+	<div class="container">
+		<div class="row">
+
+			<!-- section title -->
+			<div class="title text-center wow fadeIn" data-wow-duration="500ms">
+				<h2>Ingre<span class="color">so</span></h2>
+				<div class="border"></div>
+			</div>
+			<!-- /section title -->
+
+			<!-- Contact Details -->
+
+			<!-- / End Contact Details -->
+
+			<!-- Contact Form -->
+			<div class="contact-form col-md-12 wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms">
+				<form  method="post" action="." role="form" class="form_login">
+             {% csrf_token %}
+					<div class="form-group">
+						<input type="text" placeholder="Nombre " class="form-control" name="username" id="username">
+					</div>
+
+					<div class="form-group">
+						<input type="password" placeholder="Contraseña" class="form-control" name="password" id="password">
+					</div>
+
+					<div id="cf-submit">
+						<input type="submit" id="contact-submit" class="btn btn-transparent" value="Ingresar">
+					</div>
+
+				</form>
+			</div>
+			<!-- ./End Contact Form -->
+
+		</div> <!-- end row -->
+	</div> <!-- end container -->
+
+</section> <!-- end section -->
+
+{% endblock %}

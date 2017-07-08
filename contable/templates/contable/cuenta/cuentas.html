@@ -1,0 +1,76 @@
+
+<style>
+li:hover{
+background:#A5A5A5  !important;
+}
+</style>
+
+
+
+
+<div class="modal fade" id="formulario_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h4 class="modal-title" ></h4>
+</div>
+<div class="modal-body">
+<form   class="form_entrada" action="../perfil/" method="post">
+  <div class="form-group">
+    <label for="saldo_inicial" class="control-label">Nombre :</label>
+    <input type="text" class="form-control" id="cuenta_nombre" name="cuenta_nombre">
+  </div>
+  <div class="form-group">
+    <label for="cuenta_nombre" class="control-label">Saldo inicial :</label>
+    <input type="text" class="form-control" id="saldo_inicial" name="saldo_inicial">
+  </div>
+  <div class="form-group" >
+    <label for="cuenta_padre" class="control-label">Padre :</label>
+    <input type="text" class="form-control" id="cuenta_padre" name="cuenta_padre">
+  </div>
+</form>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+<button type="button" class="btn btn-primary">Aceptar</button>
+</div>
+</div>
+</div>
+</div>
+
+<div id="menu" style="position: absolute; z-index: 500;display:none" objId="">
+<ul style="width: 100px; list-style: none; padding: 1px; margin: 0px; background-color: rgb(255, 255, 255); border: 1px solid rgb(153, 153, 153);">
+    <li class="fa fa-plus-circle" id="add" style="margin: 0px; color: rgb(0, 0, 0); display: block; cursor: default; padding: 3px; border: 1px solid rgb(255, 255, 255); background-color: transparent;">
+        <span class="ui-icon ui-icon-plus" style="float:left"></span>
+        <span style="font-size:11px; font-family:Verdana">Agregar</span>
+    </li>
+    <li class="fa fa-edit" id="edit" style="margin: 0px; color: rgb(0, 0, 0); display: block; cursor: default; padding: 3px; border: 1px solid rgb(255, 255, 255); background-color: transparent;">
+        <span class="ui-icon ui-icon-pencil" style="float:left"></span>
+        <span style="font-size:11px; font-family:Verdana">Editar</span>
+    </li>
+    <li class="fa fa-remove" id="del" disabled="disabled" style="margin: 0px; color: rgb(0, 0, 0); display: block; cursor: default; padding: 3px; border: 1px solid rgb(255, 255, 255); background-color: transparent;">
+        <span class="ui-icon ui-icon-trash" style="float:left"></span>
+        <span style="font-size:11px; font-family:Verdana">Eliminar</span>
+    </li>
+</ul>
+</div>
+
+<table id="catalogo-cuentas">
+<caption>
+<a href="#" onclick="jQuery('#example-advanced').treetable('expandAll'); return false;">Expand all</a>
+<a href="#" onclick="jQuery('#example-advanced').treetable('collapseAll'); return false;">Collapse all</a>
+</caption>
+<thead>
+<tr>
+<th>Codigo</th>
+<th>Nombre</th>
+<th>Saldo</th>
+</tr>
+</thead>
+<tbody id="contenedor">
+{% for cuenta in user.empresa.cuentas %}
+    <tr data-tt-id='{{cuenta.id}}' data-tt-parent-id='{{ cuenta.padre.id }}'><td><span class='{{ cuenta.css_class }}'> {{cuenta.codigo}}</span></td><td>{{cuenta.nombre}}</td><td>{{ cuenta.saldo}} C$</td></tr>
+{% endfor %}
+</tbody>
+</table>

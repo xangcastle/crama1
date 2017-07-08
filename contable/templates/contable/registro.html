@@ -1,0 +1,58 @@
+{% extends 'contable/base.html' %}
+{% block content %}
+<section id="contact-us">
+  <div class="container">
+    <div class="row">
+
+      <!-- section title -->
+      <div class="title text-center wow fadeIn" data-wow-duration="500ms">
+        <h2>Registro <span class="color">Empresa</span></h2>
+        <div class="border"></div>
+      </div>
+      <!-- /section title -->
+
+      <!-- Contact Details -->
+
+      <!-- / End Contact Details -->
+
+      <!-- Contact Form -->
+      <div class="contact-form col-md-12 wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms">
+          {% if error %}
+              {{ error }}
+          {% endif %}
+
+        <form  method="post" action="." role="form" class="form_registro">
+          {% csrf_token %}
+          <div class="form-group">
+            <input type="text" placeholder="Nombre Empresa" class="form-control" name="empresa" id="empresa" value="{{ empresa }}">
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="Ruc Empresa" class="form-control" name="ruc" id="ruc" value="{{ ruc }}">
+          </div>
+
+          <div class="form-group">
+            <input type="text" placeholder="Nombre Usuario " class="form-control" name="username" id="username" value="{{ username }}">
+          </div>
+
+          <div class="form-group">
+            <input type="password" placeholder="Contraseña " class="form-control" name="password" id="password" value="{{ password }}">
+          </div>
+
+          <div class="form-group">
+            <input type="email" placeholder="Correo " class="form-control" name="email" id="email" value="{{ email }}">
+          </div>
+
+
+          <div id="cf-submit">
+            <input type="submit" id="contact-submit" class="btn btn-transparent" value="Registrarse">
+          </div>
+
+        </form>
+      </div>
+      <!-- ./End Contact Form -->
+
+    </div> <!-- end row -->
+  </div> <!-- end container -->
+
+</section> <!-- end section -->
+{% endblock %}

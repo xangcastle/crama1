@@ -1,0 +1,56 @@
+{% if not empresa.perfil_complato %}
+      <div class="col-md-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>Perfil empresa <small>datos de su empresa</small></h2>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <br>
+              <form class="form-horizontal form-label-left form_entrada"  action="../completar_empresa/" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre</label>
+                  <div class="col-md-9 col-sm-9 col-xs-12">
+                    <input type="text" class="form-control" placeholder="Nombre empresa" disabled id="name" name="name" value="{{empresa.nombre}}" >
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Ruc </label>
+                  <div class="col-md-9 col-sm-9 col-xs-12">
+                    <input type="text" class="form-control" placeholder="Ruc" id="ruc" disabled name="ruc" value="{{empresa.ruc}}" >
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Tipo empresa</label>
+                  <div class="col-md-9 col-sm-9 col-xs-12">
+                    <select class="form-control requerido" name="tipo_id" id="tipo_id">
+                       <option value="">Seleccione un tipo</option>
+                        {% for tipo in tipos_empresa %}
+                         <option value="{{ tipo.id }}">{{ tipo.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Apertura Contable <span class="required">*</span>
+                </label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <input class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="fecha_apertura">
+                </div>
+              </div>
+
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                  <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                    <button type="submit" class="btn btn-success">Actualizar</button>
+                  </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+       </div>
+{% endif %}

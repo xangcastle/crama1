@@ -1,0 +1,40 @@
+<div class="col-md-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>Perfil Empresa<small></small></h2>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <br>
+              <form class="form-horizontal form-label-left form_archivo" action="../editar_empresa/" method="post" enctype="multipart/form-data" id="form_editar_empresa">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre</label>
+                  <div class="col-md-9 col-sm-9 col-xs-12">
+                    <input type="text" class="form-control requerido" placeholder="Nombre empresa"  id="name" name="name" value="{{user.empresa.nombre}}" >
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Ruc </label>
+                  <div class="col-md-9 col-sm-9 col-xs-12">
+                    <input type="text" class="form-control requerido" placeholder="Ruc" id="ruc"  name="ruc" value="{{user.empresa.ruc}}" >
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Imagen </label>
+                  <div class="col-md-9 col-sm-9 col-xs-12">
+                    <input type="file" class="form-control"  id="imagen"  name="imagen" value="{{user.empresa.imagen}}" >
+                  </div>
+                </div>
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                  <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                    <button type="submit" class="btn btn-success">Actualizar</button>
+                  </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+    </div>
