@@ -361,16 +361,26 @@
         //controlamos los botones del menú
         $("#menu").click(function(e){
         // El switch utiliza los IDs de los <li> del menú
-              switch(e.target.id){
+              var tds= $("table > tbody > tr.selected td");
+              var acction = e.target.id;
+              if(acction ==="")
+                  acction = e.target.parentElement.id
+
+              switch(acction){
                     case "add":
                                 $("#formulario_modal").find('.modal-title').text("Agregar SubCuenta");
                                 $("#formulario_modal").find('#cuenta_nombre').val('nuevo');
                                 $("#formulario_modal").modal('show');
+
+
                           break;
                     case "edit":
                                   $("#formulario_modal").find('.modal-title').text("Agregar SubCuenta");
                                   $("#formulario_modal").find('#cuenta_nombre').text($("#menu").attr('objId'));
                                   $("#formulario_modal").modal('show');
+                                  $("#cuenta_padre").val($(tds[0]).find('span')[1].textContent);
+                                  $("#cuenta_nombre").val(tds[1].innerHTML)
+                                  $("#saldo_inicial").val(tds[2].innerHTML);
                           break;
                     case "del":
                                   $("#formulario_modal").find('.modal-title').text("Borrar");
